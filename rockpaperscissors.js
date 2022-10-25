@@ -1,53 +1,47 @@
-function computerChoice() {
-    let myArray = ["rock", "paper", "scissors"];
-    let random = myArray[Math.floor(Math.random() * myArray.length)];
-    return random;
-}
 let computerPoints = 0;
 let playerPoints = 0;
-let computerSelection = computerChoice();
-//let playerChoice = prompt("rock?, paper? or scissors?");
-//let playerSelection = playerChoice.toLowerCase();
-let playerSelection = "rock"
-
+function computerChoice() {
+    let myArray = ["rock", "paper", "scissors"];
+    let randomNum = Math.floor(Math.random() * myArray.length);
+    return myArray[randomNum];
+}
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return "It's a tie";
+        return `It's a tie, you both picked ${playerSelection}`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        ++computerPoints;
+        computerPoints++;
         return "You lose, paper beats rock";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        ++playerPoints;
+        playerPoints++;
         return "You win, rock beats scissors"
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        ++playerPoints;
+        playerPoints++;
         return "You win, paper beats rock";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        ++computerPoints;
+        computerPoints++;
         return "You lose, scissors beats paper";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        ++computerPoints;
+        computerPoints++;
         return "You lose, rock beats scissors";
     } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-        ++playerPoints;
+        playerPoints++;
         return "You win, rock beats scissors" ;
     }
-  
 }
-//console.log(playRound(playerSelection, computerSelection));
-let result = playRound(playerSelection, computerSelection);
-let counter = 0;
-function Game() {
+const game = () => {
   for (let i = 0; i < 5; i++) {
-    if (result.includes("win")) {
-        counter += 1;
-    } else if (result.includes("lose")) {
-        counter -= 1;
+    const playerSelection = prompt("rock?, paper? or scissors?").toLowerCase();
+    const computerSelection = computerChoice();
+    playRound(playerSelection, computerSelection)
+  }
+    if (playerPoints > computerPoints) {
+        return "You beat computer, It's a Win!";
+    } else if (playerPoints < computerPoints) {
+        return "Computer beat you, you lost...";
     } else {
-        counter += 0;
+        return "It's a draw, not bad.";
     }
   }
-  return counter;
-}
+(game());
 
 
