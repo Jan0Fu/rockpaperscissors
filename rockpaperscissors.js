@@ -39,16 +39,16 @@ function playRound(playerSelection, computerSelection) {
         }
         score.textContent = updateScore()
         if (playerScore === 5) {
-            currentRound.textContent = 'You won the game! Congratulations!'
+            currentRound.textContent = "You won the game! Congratulations!"
         }
         else if (computerScore === 5) {
-            currentRound.textContent = 'You lost to a computer! Try again'
+            currentRound.textContent = "You lost to a computer! Try again"
         }
     }
     else {
-        alert('Game is over. Refresh page to play again')
+        alert("Game is over. Refresh page to play again")
     }
 }
 function updateScore() {
-    return `Score is ${playerScore}-${computerScore}`
+    return `Score is: Player  ${playerScore}-${computerScore}  Computer`
 }
